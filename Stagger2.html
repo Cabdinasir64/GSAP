@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stagger with Different Delays</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #9b59b6;
+            margin: 10px;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 flex justify-center items-center min-h-screen">
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+        gsap.from(".box", {
+            opacity: 1,
+            y: 50,
+            duration: 1,
+            stagger: {
+                amount: 2,   // Waqtiga guud ee stagger
+                from: "end", // Ka bilaaw bidixda
+            }
+        });
+    </script>
+
+</body>
+
+</html>
