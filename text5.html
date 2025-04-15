@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <style>
+        .cursor::after {
+            content: "|";
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center bg-gradient-to-r from-yellow-500 to-gray-500 h-screen">
+
+    <div class="text-4xl font-bold text-white text-center">
+        I'm <span id="changing-text" class="cursor"></span>
+    </div>
+
+
+    <script>
+        const words = ["Developer", "Designer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const element = document.getElementById("changing-text");
+
+        function type() {
+            const word = words[wordIndex];
+            let display = word.substring(0, charIndex);
+            element.textContent = display;
+
+            if (!isDeleting && charIndex < word.length) {
+                charIndex++;
+                setTimeout(type, 100);
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 60);
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) {
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+                setTimeout(type, 1000);
+            }
+        }
+
+        setTimeout(type, 500);
+    </script>
+</body>
+
+</html>
