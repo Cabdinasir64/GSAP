@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+</head>
+
+<body class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 h-screen">
+
+    <h1 class="text-4xl font-bold text-gray-100" id="split-text">Delicious Moments</h1>
+
+    <script>
+        const text = document.getElementById("split-text");
+        const letters = text.innerText.split("");
+
+        text.innerHTML = "";
+
+        letters.forEach((letter) => {
+            text.innerHTML += `<span class="inline-block opacity-0 ">${letter === " " ? "&nbsp;" : letter}</span>`;
+        });
+        gsap.to("#split-text span", {
+            opacity: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power2.out",
+        });
+    </script>
+</body>
+
+</html>
