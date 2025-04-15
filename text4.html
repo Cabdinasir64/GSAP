@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <style>
+        .cursor::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center bg-gradient-to-r from-yellow-500 to-gray-500 h-screen">
+
+    <h1 id="type-text" class="text-4xl font-bold font-mono cursor opacity-0"></h1>
+
+    <script>
+        const text = "Delicious Moments Await You.";
+        const target = document.getElementById("type-text");
+        let i = 0;
+
+
+        setTimeout(() => {
+            target.style.opacity = 1;
+
+            function type() {
+                if (i < text.length) {
+                    target.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 150);
+                } else {
+                    target.classList.remove("cursor");
+                }
+            }
+
+            type();
+        }, 500);
+    </script>
+</body>
+
+</html>
