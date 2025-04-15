@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>text7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <style>
+        .char {
+            display: inline-block;
+            opacity: 0;
+        }
+
+        #intro {
+            z-index: 50;
+        }
+    </style>
+</head>
+
+<body class="h-screen text-white overflow-hidden">
+
+    <!-- Intro -->
+    <div class="absolute inset-0 flex justify-center items-center bg-black" id="intro">
+        <div class="text-7xl font-bold tracking-widest" id="container"></div>
+    </div>
+
+    <!-- Real Page Content -->
+    <div id="main-content"
+        class="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-indigo-700 to-purple-700 text-white opacity-0 transition-opacity duration-100 ease-in-out">
+        <h1 class="text-5xl font-bold mb-6">Welcome to My World</h1>
+        <p class="text-lg max-w-xl text-center opacity-80">I'm Abdinasir, a Creative Developer & Designer passionate
+            about smooth animations and beautiful UI experiences.</p>
+    </div>
+
+    <script>
+        const name = "Abdinasir";
+        const container = document.getElementById("container");
+
+        name.split("").forEach((char, index) => {
+            const span = document.createElement("span");
+            span.classList.add("char");
+            span.textContent = char;
+            span.setAttribute("data-index", index);
+            container.appendChild(span);
+        });
+
+        const chars = gsap.utils.toArray(".char");
+
+        gsap.fromTo(chars[0], {
+            y: -250,
+            scale: 20,
+            opacity: 0,
+        }, {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "bounce.out"
+        });
+
+        chars.slice(1).forEach((char, i) => {
+            gsap.fromTo(char, {
+                x: 500,
+                y: 150,
+                scale: 0.5,
+                opacity: 0,
+            }, {
+                x: 0,
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                delay: 0.8 + i * 0.15,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+        gsap.to("#intro", {
+            delay: 3.5,
+            y: "-100%",
+            duration: 0.9,
+            ease: "power4.inOut",
+            onComplete: () => {
+                gsap.to("#main-content", {
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out"
+                }, "-=0.2");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
