@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
+</head>
+
+<body class="font-sans bg-gradient-to-b from-violet-700 to-violet-900 min-h-screen flex items-center justify-center">
+
+  <h1 class="text-5xl font-bold text-gray-800 reveal-text">Hello, World!</h1>
+
+  <script>
+    gsap.from(".reveal-text", {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power4.out",
+    })
+
+  </script>
+
+</body>
+
+</html>
