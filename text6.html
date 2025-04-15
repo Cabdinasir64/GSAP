@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <style>
+        .char {
+            display: inline-block;
+            transform: translateY(-150px);
+            opacity: 0;
+        }
+    </style>
+</head>
+
+
+<body class="h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
+
+    <h1 id="animated-text" class="text-5xl font-bold uppercase tracking-wider"></h1>
+
+    <script>
+        const text = "Welcome";
+        const container = document.getElementById("animated-text");
+
+        // Split text into spans
+        text.split("").forEach((char) => {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.classList.add("char");
+            container.appendChild(span);
+        });
+
+        // Animate with GSAP (drop down with bounce)
+        gsap.to(".char", {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1.2,
+            ease: "bounce.out"
+        });
+    </script>
+
+</body>
+
+</html>
