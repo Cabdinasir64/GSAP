@@ -21,6 +21,11 @@
             opacity: 0;
             transform: translateY(50px);
         }
+
+        .letter {
+            transform: translateX(-150px);
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -38,7 +43,8 @@
     </section>
 
     <!-- Section 2 -->
-    <section class="bg-orange-400 grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 text-black align-items-center justify-items-center">
+    <section
+        class="bg-orange-400 grid grid-cols-1 md:grid-cols-3 gap-8 px-8 py-12 text-black align-items-center justify-items-center">
         <div class="box1 bg-white h-60 w-40 rounded-lg shadow-xl"></div>
         <div class="box2 bg-white h-60 w-40 rounded-lg shadow-xl"></div>
         <div class="box3 bg-white h-60 w-40 rounded-lg shadow-xl"></div>
@@ -47,8 +53,7 @@
     <!-- Section 3 -->
     <section class="bg-lime-600 text-center px-4">
         <h2 class="text-4xl font-bold mb-4 sec3title">Section 3: Amazing Stuff</h2>
-        <p class="text-lg max-w-xl mx-auto mb-4 sec3text">ScrollTrigger makes your animations come alive as you scroll
-            through the page!</p>
+        <p class="text-lg max-w-xl mx-auto mb-4 sec3text" id="sec3text"></p>
         <button class="bg-white text-lime-700 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 sec3btn">Try It</button>
     </section>
 
@@ -63,14 +68,25 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-
-        // Intro Section
+        let text = "ScrollTrigger makes your animations come alive as you scroll through the page!";
+        let sec3text = document.getElementById("sec3text");
+        text.split(" ").forEach(word => {
+            let wordSpan = document.createElement("span");
+            wordSpan.style.display = "inline-block";
+            wordSpan.classList.add("word")
+            wordSpan.style.marginRight = "8px";
+            word.split("").forEach(letter => {
+                let letterSpan = document.createElement("span");
+                letterSpan.innerText = letter;
+                letterSpan.classList.add("letter")
+                wordSpan.appendChild(letterSpan);
+            });
+            sec3text.appendChild(wordSpan);
+        });
         gsap.timeline()
             .from(".title", { y: -80, opacity: 0, duration: 1 })
             .from(".subtitle", { y: -50, opacity: 0, duration: 1 }, "-=0.5")
             .from(".btn", { scale: 0, opacity: 0, duration: 0.8, ease: "back.out(1.7)" }, "-=0.4");
-
-        // Boxes Animation
         gsap.from(".box1", {
             x: -100,
             opacity: 0,
@@ -78,11 +94,10 @@
             scrollTrigger: {
                 trigger: ".box1",
                 start: "top 80%",
-                end:"top 20%",
+                end: "top 20%",
 
             }
         });
-
         gsap.from(".box2", {
             scale: 0,
             opacity: 0,
@@ -93,7 +108,6 @@
                 end: "top 20%",
             }
         });
-
         gsap.from(".box3", {
             x: 100,
             opacity: 0,
@@ -104,8 +118,6 @@
                 end: "top 20%",
             }
         });
-
-        // Section 3 Reveal
         gsap.from(".sec3title", {
             y: 100,
             opacity: 0,
@@ -113,23 +125,23 @@
             scrollTrigger: {
                 trigger: ".sec3title",
                 start: "top 90%",
-              
-
             }
         });
-
-        gsap.from(".sec3text", {
-            x: -100,
-            opacity: 0,
+        gsap.to(".letter", {
+            x: 0,
+            opacity: 1,
             duration: 1,
-            delay: 0.2,
+            stagger: {
+                each: 0.03,
+                from: "start"
+            },
+            ease: "power2.out",
             scrollTrigger: {
-                trigger: ".sec3text",
-                start: "top 90%",
-               
+                trigger: "#sec3text",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
             }
         });
-
         gsap.from(".sec3btn", {
             scale: 0,
             opacity: 0,
@@ -139,11 +151,9 @@
             scrollTrigger: {
                 trigger: ".sec3btn",
                 start: "top 90%",
-               
-            }
-        });
 
-        // Final Section
+            }
+        }, "-=0.4");
         gsap.from(".final-title", {
             scale: 0.5,
             opacity: 0,
@@ -151,11 +161,10 @@
             scrollTrigger: {
                 trigger: ".final-title",
                 start: "top 90%",
-              
             }
         });
     </script>
-   
+
 </body>
 
 </html>
