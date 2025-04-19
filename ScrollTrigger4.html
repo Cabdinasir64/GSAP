@@ -202,7 +202,7 @@
             opacity: 0,
             y: 50,
             x: 50,
-            scale : 0.5,
+            scale: 0.5,
             duration: 1,
             stagger: 0.3,
             ease: "power3.out"
@@ -213,7 +213,7 @@
 
         let totalWidth = 0;
         cards.forEach(card => {
-            totalWidth += card.offsetWidth + 50; 
+            totalWidth += card.offsetWidth + 50;
         });
 
         gsap.set(".horizontal-scroll", {
@@ -226,7 +226,7 @@
             scrollTrigger: {
                 trigger: ".scroll-container",
                 pin: true,
-                scrub: true,
+                scrub: 1,
                 end: () => "+=" + (totalWidth - document.querySelector(".scroll-container").offsetWidth)
             }
         });
