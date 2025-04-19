@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Horizontal Scroll</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: visible;
+            width: max-content;
+        }
+
+        .city-card {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+        }
+
+        .scroll-container {
+            overflow-x: hidden;
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .blend-overlay {
+            mix-blend-mode: overlay;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans">
+
+    <!-- Hero Section -->
+    <div
+        class="h-screen bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/30 z-10"></div>
+        <div class="absolute inset-0 flex items-center justify-center blend-overlay opacity-20">
+            <div class="text-[30vw] font-bold text-white">TRAVEL</div>
+        </div>
+        <div class="container relative z-20 px-8 max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6">EXPLORE</h1>
+            <h2 class="text-4xl md:text-7xl font-bold mb-8 gradient-text">WORLD CITIES</h2>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-gray-300">Scroll down to discover vibrant
+                destinations across the globe</p>
+            <div class="flex items-center justify-center space-x-4">
+                <div class="w-12 h-0.5 bg-white"></div>
+                <span class="text-sm tracking-widest">SCROLL DOWN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Horizontal Scroll Section -->
+    <div class="scroll-container py-20 bg-gray-900">
+        <div class="horizontal-scroll space-x-10 pl-8">
+            <!-- London -->
+            <div
+                class="city-card w-[80vw] md:w-[50vw] h-[70vh] bg-gray-800 rounded-3xl overflow-hidden shadow-2xl relative group">
+                <img src="https://cdn.pixabay.com/photo/2020/11/09/22/20/tower-bridge-5727975_1280.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="London">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                        <span class="text-sm text-gray-300">EUROPE</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-2">LONDON</h2>
+                    <p class="text-gray-300 mb-4">Historic capital with modern vibes and iconic landmarks.</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Big Ben</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">London Eye</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Tower Bridge</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paris -->
+            <div
+                class="city-card w-[80vw] md:w-[50vw] h-[70vh] bg-gray-800 rounded-3xl overflow-hidden shadow-2xl relative group">
+                <img src="https://cdn.pixabay.com/photo/2019/05/09/11/52/cathedral-4191069_1280.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Paris">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+                        <span class="text-sm text-gray-300">EUROPE</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-2">PARIS</h2>
+                    <p class="text-gray-300 mb-4">City of love, art, and exquisite cuisine.</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Eiffel Tower</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Louvre</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Champs-Élysées</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tokyo -->
+            <div
+                class="city-card w-[80vw] md:w-[50vw] h-[70vh] bg-gray-800 rounded-3xl overflow-hidden shadow-2xl relative group">
+                <img src="https://cdn.pixabay.com/photo/2013/11/25/09/47/buildings-217878_1280.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Tokyo">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="text-sm text-gray-300">ASIA</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-2">TOKYO</h2>
+                    <p class="text-gray-300 mb-4">Futuristic metropolis blending tradition and innovation.</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Shibuya</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Akihabara</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Senso-ji</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mogadishu -->
+            <div
+                class="city-card w-[80vw] md:w-[50vw] h-[70vh] bg-gray-800 rounded-3xl overflow-hidden shadow-2xl relative group">
+                <img src="https://cdn.pixabay.com/photo/2020/04/16/06/53/river-5049398_1280.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Mogadishu">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="text-sm text-gray-300">AFRICA</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-2">SOMALIA</h2>
+                    <p class="text-gray-300 mb-4">Coastal capital with rich history and vibrant culture.</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Lido Beach</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Bakaara Market</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Mosques</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shanghai -->
+            <div
+                class="city-card w-[80vw] md:w-[50vw] h-[70vh] bg-gray-800 rounded-3xl overflow-hidden shadow-2xl relative group">
+                <img src="https://cdn.pixabay.com/photo/2015/03/14/11/09/buildings-673087_1280.jpg"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    alt="Shanghai">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        <span class="text-sm text-gray-300">ASIA</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-2">SHANGHAI</h2>
+                    <p class="text-gray-300 mb-4">Global financial hub with stunning skyline.</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">The Bund</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Pudong</span>
+                        <span class="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm">Yu Garden</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="h-screen bg-gradient-to-tr from-indigo-900 to-purple-900 flex items-center justify-center">
+        <div class="container px-8 max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-8">WHERE TO <span class="gradient-text">NEXT?</span></h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">Ready for your next adventure? Explore more
+                destinations with us.</p>
+            <button
+                class="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors shadow-lg">
+                Discover More
+            </button>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from("div:first-child h1, div:first-child h2, div:first-child p, div:first-child div", {
+            opacity: 0,
+            y: 50,
+            x: 50,
+            scale : 0.5,
+            duration: 1,
+            stagger: 0.3,
+            ease: "power3.out"
+        });
+
+        const cards = gsap.utils.toArray(".city-card");
+        const container = document.querySelector(".horizontal-scroll");
+
+        let totalWidth = 0;
+        cards.forEach(card => {
+            totalWidth += card.offsetWidth + 50; 
+        });
+
+        gsap.set(".horizontal-scroll", {
+            width: totalWidth
+        });
+
+        gsap.to(".horizontal-scroll", {
+            x: () => -(totalWidth - document.querySelector(".scroll-container").offsetWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scroll-container",
+                pin: true,
+                scrub: true,
+                end: () => "+=" + (totalWidth - document.querySelector(".scroll-container").offsetWidth)
+            }
+        });
+
+        cards.forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: -100,
+                duration: 0.8,
+                delay: i * 0.1,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "left 90%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        gsap.from("div:last-child h2, div:last-child p, div:last-child button", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: "div:last-child",
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+    </script>
+
+</body>
+
+</html>
