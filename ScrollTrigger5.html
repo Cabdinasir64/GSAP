@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Trigger5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .reveal-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+            transform-origin: left;
+            z-index: 10;
+        }
+        .reveal-content {
+            opacity: 0;
+            transform: translateY(200px);
+            will-change: transform, opacity;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full py-6 z-50 backdrop-blur-md bg-white/80">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">ScrollFX</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Features</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Showcase</a>
+                <a href="#" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden pt-16">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30"></div>
+        </div>
+        <div class="container mx-auto px-6 py-20 text-center flex flex-col items-center">
+            <div class="relative overflow-hidden inline-block">
+                <div class="reveal-mask"></div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 reveal-content">Modern <span class="gradient-text">Scroll Effects</span></h1>
+            </div>
+            <div class="relative overflow-hidden inline-block max-w-3xl mx-auto">
+                <div class="reveal-mask"></div>
+                <p class="text-xl md:text-2xl text-gray-300 reveal-content">Beautiful block reveal animations that engage your visitors with smooth, performant transitions.</p>
+            </div>
+            <div class="mt-12 relative overflow-hidden inline-block">
+                <div class="reveal-mask"></div>
+                <button class="px-8 py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 transition reveal-content">
+                    Explore Effects <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-white opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 relative overflow-hidden inline-block w-full">
+                <div class="reveal-mask"></div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 reveal-content">Amazing <span class="gradient-text">Features</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 p-8 card-hover">
+                    <div class="reveal-mask"></div>
+                    <div class="reveal-content">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-bolt text-indigo-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Lightning Fast</h3>
+                        <p class="text-gray-600">Optimized animations using GSAP for 60fps smoothness on all devices.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 p-8 card-hover">
+                    <div class="reveal-mask"></div>
+                    <div class="reveal-content">
+                        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Fully Responsive</h3>
+                        <p class="text-gray-600">Looks perfect on mobile, tablet, and desktop with adaptive animations.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-50 to-rose-50 p-8 card-hover">
+                    <div class="reveal-mask"></div>
+                    <div class="reveal-content">
+                        <div class="w-16 h-16 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-sliders-h text-pink-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Easy Customization</h3>
+                        <p class="text-gray-600">Simple to implement and customize for your specific needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Showcase -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <!-- Block 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-32">
+                <div class="relative overflow-hidden rounded-3xl shadow-xl">
+                    <div class="reveal-mask"></div>
+                    <img src="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg" alt="Technology" 
+                         class="w-full h-auto rounded-3xl reveal-content">
+                </div>
+                <div class="relative overflow-hidden">
+                    <div class="reveal-mask"></div>
+                    <div class="reveal-content">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Sleek <span class="gradient-text">Animations</span></h2>
+                        <p class="text-gray-600 mb-6 text-lg">Our block reveal effects provide a modern, polished look that enhances user experience without being distracting. The smooth transitions guide users through your content naturally.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-indigo-500 mr-3"></i>
+                                <span class="text-gray-700">60fps smooth animations</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-indigo-500 mr-3"></i>
+                                <span class="text-gray-700">GPU accelerated performance</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-indigo-500 mr-3"></i>
+                                <span class="text-gray-700">Scroll-triggered sequencing</span>
+                            </li>
+                        </ul>
+                        <button class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                            See Examples <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-32">
+                <div class="relative overflow-hidden order-1 lg:order-2">
+                    <div class="reveal-mask"></div>
+                    <img src="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg" alt="Design" 
+                         class="w-full h-auto rounded-3xl shadow-xl reveal-content">
+                </div>
+                <div class="relative overflow-hidden order-2 lg:order-1">
+                    <div class="reveal-mask"></div>
+                    <div class="reveal-content">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Performance <span class="gradient-text">Optimized</span></h2>
+                        <p class="text-gray-600 mb-6 text-lg">Built with GSAP for buttery smooth animations that won't compromise your site's performance. We've optimized every aspect to ensure zero lag or jank.</p>
+                        <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-medium text-gray-700">Animation Efficiency</span>
+                                <span class="font-bold text-indigo-600">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <button class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                            View Benchmarks <i class="fas fa-chart-line ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative flex flex-col items-center">
+            <div class="relative overflow-hidden inline-block max-w-3xl mx-auto">
+                <div class="reveal-mask"></div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal-content">Ready to <span class="text-white">Elevate</span> Your Website?</h2>
+            </div>
+            <div class="relative overflow-hidden inline-block max-w-2xl mx-auto">
+                <div class="reveal-mask"></div>
+                <p class="text-xl mb-8 text-indigo-100 reveal-content">Implement these stunning scroll effects on your site today and impress your visitors with cutting-edge animations.</p>
+            </div>
+            <div class="relative overflow-hidden inline-block">
+                <div class="reveal-mask"></div>
+                <button class="px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold text-lg hover:bg-gray-100 transition flex items-center mx-auto reveal-content">
+                    Contact Our Team <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">ScrollFX</h3>
+                    <p class="mb-4">Modern scroll animations for the modern web.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">About</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p>© 2023 ScrollFX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.utils.toArray('[class*="reveal-"]').forEach((element) => {
+                if (element.classList.contains('reveal-mask')) {
+                    gsap.fromTo(element, 
+                        { scaleX: 1 },
+                        {
+                            scaleX: 0,
+                            duration: 1.2,
+                            ease: "power3.out",
+                            scrollTrigger: {
+                                trigger: element.parentElement,
+                                start: "top 75%",
+                                toggleActions: "play none none none"
+                            }
+                        }
+                    );
+                }
+                
+                if (element.classList.contains('reveal-content')) {
+                    gsap.fromTo(element, 
+                        { 
+                            opacity: 0,
+                            y: 30,
+                            x: -50,
+                            scale: 0.8,
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            x: 0,
+                            scale: 1,
+                            duration: 0.8,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: element.parentElement,
+                                start: "top 75%",
+                                toggleActions: "play none none none"
+                            }
+                        }
+                    );
+                }
+            });
+            gsap.to(".gradient-text", {
+                backgroundPositionX: "100%",
+                duration: 10,
+                repeat: -1,
+                ease: "linear",
+                yoyo: true
+            });
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
