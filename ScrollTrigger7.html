@@ -2,83 +2,65 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smooth Scroll Animation</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <style>
-    body {
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Scroll Animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
 
-    .box-container {
-      pointer-events: none;
-    }
-  </style>
+        .box {
+            position: fixed;
+            top: 35%;
+            right: 10%
+        }
+    </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
-  <main>
-    <!-- Floating Box -->
-    <div class="box-container fixed top-1/2 right-10 transform -translate-y-1/2 z-50">
-      <div class="moving w-64 h-64 bg-red-600 rounded-3xl shadow-2xl flex items-center justify-center opacity-0">
-        <h1 class="text-2xl font-bold">Moving Box</h1>
-      </div>
+    <!-- Box -->
+    <div class="box">
+        <div class="w-64 h-64 bg-red-500 rounded-2xl shadow-2xl flex items-center justify-center moving">
+            <h1 class="text-2xl font-bold text-white">Moving Box</h1>
+        </div>
     </div>
 
     <!-- Sections -->
-    <section class="h-screen bg-cyan-600 flex items-center justify-center">
-      <h2 class="text-5xl font-extrabold">Section 1</h2>
+    <section class="h-screen bg-cyan-500 flex items-center justify-center">
+        <h2 class="text-white text-5xl">Section 1</h2>
     </section>
 
-    <section class="h-screen bg-lime-600 flex items-center justify-center">
-      <h2 class="text-5xl font-extrabold">Section 2</h2>
+    <section class="h-screen bg-lime-500 flex items-center justify-center">
+        <h2 class="text-white text-5xl">Section 2</h2>
     </section>
 
     <section class="h-screen bg-orange-500 flex items-center justify-center">
-      <h2 class="text-5xl font-extrabold">Section 3</h2>
+        <h2 class="text-white text-5xl">Section 3</h2>
     </section>
-  </main>
 
-  <!-- Animation Script -->
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
 
-    const box = gsap.fromTo(".moving",
-      { opacity: 0, y: 100 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-    );
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+            }
+        });
 
-    const scrollTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: "main",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      }
-    });
 
-    scrollTL
-      // Section 2: Move left, grow, rotate slightly
-      .to(".moving", {
-        x: -800,
-        scale: 1.3,
-        rotate: 15,
-        duration: 1
-      })
 
-      // Section 3: Move right, shrink, straighten
-      .to(".moving", {
-        x: 0,
-        scale: 1,
-        rotate: 0,
-        duration: 1
-      });
-  </script>
-
+        
+        tl.to(".moving", { x: -900, scale: 1.2, duration: 1 })
+            .to(".moving", { x: 50, scale: 1, rotate: 0, duration: 0.8 });
+    </script>
 </body>
 
 </html>
