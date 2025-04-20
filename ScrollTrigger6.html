@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Trigger Animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Moving Box (fixed position) -->
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+        <div class="w-64 h-64 bg-red-500 rounded-2xl shadow-2xl flex items-center justify-center moving">
+            <h1 class="text-2xl font-bold text-white">Moving Box</h1>
+        </div>
+    </div>
+
+    <!-- Sections -->
+    <section class="h-screen bg-cyan-500 flex items-center justify-center">
+        <h2 class="text-white text-5xl">Section 1</h2>
+    </section>
+    <section class="h-screen bg-lime-500 flex items-center justify-center">
+        <h2 class="text-white text-5xl">Section 2</h2>
+    </section>
+    <section class="h-screen bg-orange-500 flex items-center justify-center">
+        <h2 class="text-white text-5xl">Section 3</h2>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+            }
+        });
+
+        timeline.to(".moving", { y: 150, duration: 1 }) 
+            .to(".moving", { x: -600, duration: 1 }) 
+    </script>
+</body>
+
+</html>
