@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Trigger8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans">
+
+    <div class="relative h-[100vh] overflow-hidden" id="parallax-container">
+        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+            style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');"
+            id="background">
+        </div>
+
+        <div class="relative z-10 flex items-center justify-center h-full">
+            <h1 class="text-white text-4xl md:text-6xl font-bold" id="text">Parallax Effect</h1>
+        </div>
+    </div>
+
+    <section class="h-screen bg-blue-500"></section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.create({
+            trigger: "#parallax-container",
+            start: "top top",
+            end: "+=500",
+            pin: true,
+            scrub: true
+        });
+
+        gsap.to("#background", {
+            yPercent: 20, 
+            scale: 1.5,    
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#parallax-container",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+       
+        gsap.to("#text", {
+            yPercent: 50, 
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#parallax-container",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    </script>
+
+</body>
+
+</html>
